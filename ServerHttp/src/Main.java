@@ -14,6 +14,9 @@ import java.io.*;
 public class Main {
       public static void main(String[] s){
 
-}
+          ReadFolder r = new ReadFolder();
+          r.readFolder("/home/vlad");
+
+      }
 
 }
