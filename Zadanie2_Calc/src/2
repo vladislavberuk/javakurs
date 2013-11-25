@@ -1,0 +1,159 @@
+/**
+ * Created with IntelliJ IDEA.
+ * User: vlad
+ * Date: 8/11/13
+ * Time: 12:38 PM
+ * To change this template use File | Settings | File Templates.
+ */
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import   java.util.*;
+
+interface ICommand {
+    void Pop(Stack<Double> stack, double s,String p);
+    void Push(Stack<Double> stack, double s,String p);
+    void Print(Stack<Double> stack, double s,String p);
+    void Sqrt(Stack<Double> stack, double s,String p);
+    void Plus(Stack<Double> stack, double s,String p);
+    void Minus(Stack<Double> stack, double s,String p);
+    void Multiplay(Stack<Double> stack, double s,String p);
+    void Share(Stack<Double> stack, double s,String p);
+
+}
+
+class Command implements ICommand{
+    @Override
+    public void Pop(Stack<Double> stack, double s,String p){};
+
+    @Override
+    public void Push(Stack<Double> stack, double s,String p){};
+
+    @Override
+    public void Print(Stack<Double> stack, double s,String p){};
+
+    @Override
+    public void Sqrt(Stack<Double> stack, double s,String p){};
+
+    @Override
+    public void Plus(Stack<Double> stack, double s,String p){};
+
+    @Override
+    public void Minus(Stack<Double> stack, double s,String p){};
+
+    @Override
+    public void Multiplay(Stack<Double> stack, double s,String p){};
+
+    @Override
+    public void Share(Stack<Double> stack, double s,String p){};
+
+
+}
+
+
+
+class FactoryImpl extends Command implements ICommand{
+
+    @Override
+    public void Pop(Stack<Double> stack, double s,String p ) {
+        if(stack.empty()) {
+            System.out.println("Неверная команда стек пуст");
+        } else {
+             stack.pop();
+        }
+    }
+
+}
+
+
+class PrintCommand extends Command implements ICommand{
+
+    @Override
+    public void Print(Stack<Double> stack,double s,String p ) {
+        if(stack.empty()) {
+            System.out.println("Неверная команда стек пуст");
+        } else {
+            System.out.println(stack.pop());
+        }
+    }
+}
+
+/*class DefineCommand implements ICommand{
+    @Override
+    public void execute(Stack<Double> stack,double a) {
+        cache1=a;
+
+    }
+} */
+
+class PushCommand extends Command implements ICommand{
+
+    @Override
+    public void Push(Stack<Double> stack,double s,String p ) {
+        stack.push(s);
+
+    }
+}
+
+class SqrtCommand extends Command implements ICommand{
+
+    @Override
+    public void Sqrt(Stack<Double> stack,double s,String p ) {
+        double a = stack.pop();
+        a = Math.sqrt(a);
+        stack.push(a);
+
+
+    }
+}
+
+class PlusCommand extends Command implements ICommand{
+    @Override
+    public void Plus(Stack<Double> stack,double s,String p ) {
+        double b= stack.pop();
+        double a = stack.pop();
+        a+=b;
+        stack.push(a);
+    }
+}
+
+class MinusCommand extends Command implements ICommand{
+    @Override
+    public void Minus(Stack<Double> stack, double s,String p ) {
+        double b= stack.pop();
+        double a = stack.pop();
+        a-=b;
+        stack.push(a);
+
+    }
+}
+
+
+
+class MULTIPLAYCommand extends Command implements ICommand{
+
+    @Override
+    public void Multiplay(Stack<Double> stack, double s,String p) {
+        double b= stack.pop();
+        double a = stack.pop();
+        a*=b;
+        stack.push(a);
+
+    }
+}
+
+
+class SHARECommand extends Command implements ICommand{
+    @Override
+    public void Share(Stack<Double> stack, double s,String p) {
+        double b= stack.pop();
+        double a = stack.pop();
+        a/=b;
+        stack.push(a);
+    }
+}
+
+
+
+
+

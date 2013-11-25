@@ -1,0 +1,113 @@
+import java.util.Stack;
+
+public class Invoker {
+    public static double a1 = 0;
+    public static double b1 = 0;
+    public static double с1 = 0;
+    public static double t = 0;
+    public static int count = 0;
+
+
+
+    ICommand c = new FactoryImpl();
+    void  metodConvector(){
+
+        String[] comandList = ConcreteCommand.myFile;
+        Stack<Double> stack = new Stack<Double>();
+
+
+        for (int i = 0;i<count;i++)
+        {
+            String[] s = comandList[i].split(" ");
+
+            if (s[0].equals("PUSH") && s[1].equals("a")) {
+
+
+                c.PUSH(stack, a1,"PUSH");
+            }
+
+            if (s[0].equals("PUSH")&& s[1].equals("b")) {
+
+                c.PUSH(stack, b1, "PUSH");
+            }
+
+            if (s[0].equals("PUSH")&& s[1].equals("c")) {
+
+                c.PUSH(stack, с1, "PUSH");
+            }
+
+
+            if (s[0].equals("PUSH") && s[1].equals("a") || s[0].equals("PUSH") && s[1].equals("b") ||s[0].equals("PUSH") && s[1].equals("c")) {
+
+
+            } else {
+                if (s[0].equals("PUSH")){
+                    t = Double.parseDouble(s[1].substring(0));
+
+                    c.PUSH(stack, t, "PUSH");
+                }
+            }
+
+
+            if (s[0].equals("POP")) {
+
+                c.PUSH(stack, a1, "POP");
+            }
+
+
+            if (s[0].equals("DEFINE") && s[1].equals("a")) {
+                a1 = Double.parseDouble(s[2].substring(0));
+
+
+            }
+
+            if (s[0].equals("DEFINE") && s[1].equals("b")) {
+                b1 = Double.parseDouble(s[2].substring(0));
+
+
+            }
+
+            if (s[0].equals("DEFINE") && s[1].equals("c")) {
+                с1 = Double.parseDouble(s[2].substring(0));
+
+
+            }
+
+            if (s[0].equals("PLUS")) {
+
+                c.PLUS(stack, a1, "PLUS");
+            }
+
+            if (s[0].equals("MINUS")) {
+
+                c.MINUS(stack, a1, "MINUS");
+            }
+
+            if (s[0].equals("SQRT")) {
+
+
+                c.SQRT(stack, a1, "SQRT");
+
+            }
+
+            if (s[0].equals("MULTIPLAY")) {
+
+                c.MULTIPLAY(stack, a1, "MULTIPLAY");
+            }
+
+            if (s[0].equals("SHARE")) {
+
+                c.SHARE(stack, a1, "SHARE");
+            }
+
+            if (s[0].equals("PRINT")) {
+
+                c.PRINT(stack, a1, "PRINT");
+
+            }
+
+        }
+
+    }
+
+}
